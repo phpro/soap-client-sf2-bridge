@@ -1,4 +1,6 @@
 services:
     phpro_soap_client_bridge_demo.weather:
         class: Phpro\SoapClient\BridgeDemoBundle\WeatherClient\WeatherClient
-        factory: [Phpro\SoapClient\BridgeDemoBundle\WeatherClient\WeatherClientFactory, factory, [@phpro_soap_client_bridge.collector]]
+        factory: [Phpro\SoapClient\BridgeDemoBundle\WeatherClient\WeatherClientFactory, factory, [@event_dispatcher]]
+
+

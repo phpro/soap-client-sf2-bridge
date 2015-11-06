@@ -10,12 +10,11 @@ namespace Phpro\SoapClient\BridgeDemoBundle\WeatherClient;
 
 use Phpro\SoapClient\ClientBuilder;
 use Phpro\SoapClient\ClientFactory as PhproClientFactory;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class WeatherClientFactory
 {
-    public static function factory(EventSubscriberInterface $subscriber = null)
+    public static function factory(EventDispatcherInterface $dispatcher = null)
     {
         $wsdl = 'http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL';
         $factory = new PhproClientFactory(
@@ -23,13 +22,18 @@ class WeatherClientFactory
         );
         $builder = new ClientBuilder($factory, $wsdl, []);
         $builder->withClassMaps(WeatherClassmapFactory::factory());
+        if ($dispatcher instanceof EventDispatcherInterface) {
+            $builder->withEventDispatcher($dispatcher);
+        }
         // Add debugger if set
+        /*
         dump($subscriber);
         if ($subscriber instanceof EventSubscriberInterface) {
             $dispatcher = new EventDispatcher();
             $dispatcher->addSubscriber($subscriber);
             $builder->withEventDispatcher($dispatcher);
         }
+        */
         $client = $builder->build();
         return $client;
     }
