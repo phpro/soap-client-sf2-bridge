@@ -56,6 +56,7 @@ class DataCollector implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
+        dump(__FUNCTION__);
         return [
             Events::RESPONSE => 'onClientResponse',
             Events::REQUEST  => 'onClientRequest'
@@ -64,7 +65,7 @@ class DataCollector implements EventSubscriberInterface
 
     public function onClientRequest(RequestEvent $e)
     {
-        dump($e);
+        dump(__FUNCTION__, $e);
     }
 
     public function onClientResponse(ResponseEvent $e)

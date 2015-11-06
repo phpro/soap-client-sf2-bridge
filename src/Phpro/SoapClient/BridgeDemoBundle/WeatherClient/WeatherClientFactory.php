@@ -25,15 +25,6 @@ class WeatherClientFactory
         if ($dispatcher instanceof EventDispatcherInterface) {
             $builder->withEventDispatcher($dispatcher);
         }
-        // Add debugger if set
-        /*
-        dump($subscriber);
-        if ($subscriber instanceof EventSubscriberInterface) {
-            $dispatcher = new EventDispatcher();
-            $dispatcher->addSubscriber($subscriber);
-            $builder->withEventDispatcher($dispatcher);
-        }
-        */
         $client = $builder->build();
         return $client;
     }
