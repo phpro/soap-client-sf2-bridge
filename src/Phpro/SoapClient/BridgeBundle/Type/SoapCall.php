@@ -82,7 +82,6 @@ class SoapCall
     public function __construct(Stopwatch $stopwatch = null)
     {
         $this->stopwatch = $stopwatch;
-        $this->hash = uniqid('soapcall_', true);
     }
 
     /**
@@ -171,10 +170,11 @@ class SoapCall
      */
     public function setRequest(RequestEvent $e)
     {
-        $this->startTimer();
         $this->request = $e->getRequest();
         $this->method = $e->getMethod();
         $this->clientName = get_class($e->getClient());
+        $this->hash = uniqid(sprintf('%s::%s ', $this->clientName, $this->method), true);
+        $this->startTimer();
     }
 
     /**

@@ -1,19 +1,20 @@
+{# Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> #}
 {% extends '@WebProfiler/Profiler/layout.html.twig' %}
 
 {% block toolbar %}
     {% set icon %}
         <span class="icon">
-            <img height="18" style="padding:5px 0 5px 0;"
-                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOUlEQVRYR92X4VEUQRCFPyIQI1AiQCNQIkAjECMAI0AiACMAI1AjQCIAIwAiECPQ+qhpanaY2Z1d664s+89d7fZ0v3n9umd2g+X2EXgH3AFnwKcloTaWLAKeA9fF2i3gZm68pQD2gNMi2fvExCwMSwGslIHXwD7wBvgKHAFXlW0dADKhqYGTis8L4DCLpU6+5341Bky6mzl9zhLNojcBU6hh3xKYhwc1AL+LLD8Ad1IzO0GL39JH5raLh4OcPQxIm3TXLGgfe285ZzHgbg3or/U6Bn6lfi9BqBdtUNf0bBN4AnwA9JMNAQ/01NMFBvqZApVCawFwAwJ/2gA+qoEa1cGIv06+sBoAAcdOa50xiN/DQCyIwAHG2oY4LYFacRKatATakBDMAWAQQdimrxoRL1Kb5Sw1k/siADjZDGqAsXku5eejEWGnIcpYNsglAHvYaRWmalu1K4dUDcujYZM5hTgfcgnAHT/LnGyTlwmYbWTSMP9bhjGTfsd4mP99FiM9H0w3NQAx+WQmah7BpugPP8tQAjBeORlv55ZAtbcEGAnVUbRnyVS1BDopDBeZYEyE0vllogRvi7KV7oNcS9pQGnPN5Alu02yY3YYTm7p/nQ8imZDOEJS6sXMU6UoG0ZJRfNlzUe0pwdoPI+d7zHlFKaV/cxzLXhzHnheTx3E57dZ+IfnnrmRrv5RaL+vmzdiDJUZobarFjbf1aaaeXB+x1NPktbxnJqz0w6QHwP/9adbDgD49n2aTsf4Az06YwJ6NSDEAAAAASUVORK5CYII="/>
+            <img height="20" style="padding: 4px 0 4px 0;"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVRYR8WX8TGEMRDF31VACVSAClABKkAF7irgKkAFqMCpgA5QASpAB+Y3NjORyfddktmc75+b+26TvLzd93Zvot9nXdK5pENJG/au5ONF0q2k65LgXMzEXi4kHbRuYgCmLesBsCfpsWVxsmZT0nvtPgAA+WXtwkz8vqSn2n0AcGH5r12bxncHcGpsbQ0g7Q6AA6j6K0nHvVJwZ7LKXZLDv+yHXN24MDC3miipBzwDD1iz4JUDSFlwAYCMhqREetA5rolsTxKaXACMUc8BALiXtN2rCMcAUB9nxkAurjsD6aHfVoT0kWoHDJu1WjGH00OohzFWckwhZeoJ4AIA+Xwu0V0Uc2SH31Sui8Np4dPQjnE3blLyfBjoz5LgJTE7AQBxGAvSgtaxJ0jVo4XPYgA1F/KaIeY9AFCgpJQRb9njDuA1mitLUuQKAGnRH5AZg21q1YEN0rdrX9wAzIz2ZZTzezyBuQDgxvhCqRu6Awi3hv7w/wApD41upCakx4WBmHYGFNKBu668CAMQRjeYKLFpdwZKijCO+XcAzVaMzt9qr5uJ/9OMaver6aC5vR9wzdZeEEsPSQ1JLncw7Ry14Af6ATk7aGEywskrAAAAAElFTkSuQmCC"/>
         </span>
-        <span class="sf-toolbar-status">{{ collector.calls | length }} </span> {{ collector.totalTiming}} ms
+        <span class="sf-toolbar-status sf-toolbar-status-green">{{ collector.calls | length }} </span> {{ collector.totalTiming}} ms
     {% endset %}
 
     {% set text %}
         <div class="sf-toolbar-info-piece">
             <ul>
             {% for call in collector.calls %}
-                <li>{{ call.method }}: <strong>{{ call.timing }}</strong> ms</li>
+                <li>{{ call.method }}: <strong>{{ call.timing }} ms</li>
             {% endfor %}
             </ul>
         </div>
@@ -32,9 +33,14 @@
     {# This left-hand menu appears when using the full-screen profiler. #}
     <span class="label">
         <span class="icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOUlEQVRYR92X4VEUQRCFPyIQI1AiQCNQIkAjECMAI0AiACMAI1AjQCIAIwAiECPQ+qhpanaY2Z1d664s+89d7fZ0v3n9umd2g+X2EXgH3AFnwKcloTaWLAKeA9fF2i3gZm68pQD2gNMi2fvExCwMSwGslIHXwD7wBvgKHAFXlW0dADKhqYGTis8L4DCLpU6+5341Bky6mzl9zhLNojcBU6hh3xKYhwc1AL+LLD8Ad1IzO0GL39JH5raLh4OcPQxIm3TXLGgfe285ZzHgbg3or/U6Bn6lfi9BqBdtUNf0bBN4AnwA9JMNAQ/01NMFBvqZApVCawFwAwJ/2gA+qoEa1cGIv06+sBoAAcdOa50xiN/DQCyIwAHG2oY4LYFacRKatATakBDMAWAQQdimrxoRL1Kb5Sw1k/siADjZDGqAsXku5eejEWGnIcpYNsglAHvYaRWmalu1K4dUDcujYZM5hTgfcgnAHT/LnGyTlwmYbWTSMP9bhjGTfsd4mP99FiM9H0w3NQAx+WQmah7BpugPP8tQAjBeORlv55ZAtbcEGAnVUbRnyVS1BDopDBeZYEyE0vllogRvi7KV7oNcS9pQGnPN5Alu02yY3YYTm7p/nQ8imZDOEJS6sXMU6UoG0ZJRfNlzUe0pwdoPI+d7zHlFKaV/cxzLXhzHnheTx3E57dZ+IfnnrmRrv5RaL+vmzdiDJUZobarFjbf1aaaeXB+x1NPktbxnJqz0w6QHwP/9adbDgD49n2aTsf4Az06YwJ6NSDEAAAAASUVORK5CYII="/>
+            <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVRYR8WX8TGEMRDF31VACVSAClABKkAF7irgKkAFqMCpgA5QASpAB+Y3NjORyfddktmc75+b+26TvLzd93Zvot9nXdK5pENJG/au5ONF0q2k65LgXMzEXi4kHbRuYgCmLesBsCfpsWVxsmZT0nvtPgAA+WXtwkz8vqSn2n0AcGH5r12bxncHcGpsbQ0g7Q6AA6j6K0nHvVJwZ7LKXZLDv+yHXN24MDC3miipBzwDD1iz4JUDSFlwAYCMhqREetA5rolsTxKaXACMUc8BALiXtN2rCMcAUB9nxkAurjsD6aHfVoT0kWoHDJu1WjGH00OohzFWckwhZeoJ4AIA+Xwu0V0Uc2SH31Sui8Np4dPQjnE3blLyfBjoz5LgJTE7AQBxGAvSgtaxJ0jVo4XPYgA1F/KaIeY9AFCgpJQRb9njDuA1mitLUuQKAGnRH5AZg21q1YEN0rdrX9wAzIz2ZZTzezyBuQDgxvhCqRu6Awi3hv7w/wApD41upCakx4WBmHYGFNKBu668CAMQRjeYKLFpdwZKijCO+XcAzVaMzt9qr5uJ/9OMaver6aC5vR9wzdZeEEsPSQ1JLncw7Ry14Af6ATk7aGEywskrAAAAAElFTkSuQmCC"/>
         </span>
         <strong>Soap</strong>
+        <span class="count">
+            <span>{{ collector.calls | length }}</span>
+            <span>{{ collector.totalTiming }} ms</span>
+        </span>
     </span>
 {% endblock %}
 
