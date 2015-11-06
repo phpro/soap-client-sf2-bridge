@@ -2,10 +2,6 @@ phpro_soap_client_bridge_demo:
     resource: "@PhproSoapClientBridgeDemoBundle/Resources/config/routing.yml"
     prefix:   /
 
-phpro_soap_client_bridge:
-    resource: "@PhproSoapClientBridgeBundle/Resources/config/routing.yml"
-    prefix:   /
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
