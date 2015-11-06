@@ -25,7 +25,6 @@ class Compiler implements CompilerPassInterface
     {
         // Register subscriber on the default event dispatcher
         $definition = $container->findDefinition('debug.event_dispatcher');
-        var_dump($definition);
         $definition->addMethodCall(
             'addSubscriber',
             [new Reference('phpro_soap_client_bridge.collector')]
