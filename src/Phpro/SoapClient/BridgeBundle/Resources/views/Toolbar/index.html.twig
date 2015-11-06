@@ -1,0 +1,75 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        <span class="icon">
+            <img height="18" style="padding:5px 0 5px 0;"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOUlEQVRYR92X4VEUQRCFPyIQI1AiQCNQIkAjECMAI0AiACMAI1AjQCIAIwAiECPQ+qhpanaY2Z1d664s+89d7fZ0v3n9umd2g+X2EXgH3AFnwKcloTaWLAKeA9fF2i3gZm68pQD2gNMi2fvExCwMSwGslIHXwD7wBvgKHAFXlW0dADKhqYGTis8L4DCLpU6+5341Bky6mzl9zhLNojcBU6hh3xKYhwc1AL+LLD8Ad1IzO0GL39JH5raLh4OcPQxIm3TXLGgfe285ZzHgbg3or/U6Bn6lfi9BqBdtUNf0bBN4AnwA9JMNAQ/01NMFBvqZApVCawFwAwJ/2gA+qoEa1cGIv06+sBoAAcdOa50xiN/DQCyIwAHG2oY4LYFacRKatATakBDMAWAQQdimrxoRL1Kb5Sw1k/siADjZDGqAsXku5eejEWGnIcpYNsglAHvYaRWmalu1K4dUDcujYZM5hTgfcgnAHT/LnGyTlwmYbWTSMP9bhjGTfsd4mP99FiM9H0w3NQAx+WQmah7BpugPP8tQAjBeORlv55ZAtbcEGAnVUbRnyVS1BDopDBeZYEyE0vllogRvi7KV7oNcS9pQGnPN5Alu02yY3YYTm7p/nQ8imZDOEJS6sXMU6UoG0ZJRfNlzUe0pwdoPI+d7zHlFKaV/cxzLXhzHnheTx3E57dZ+IfnnrmRrv5RaL+vmzdiDJUZobarFjbf1aaaeXB+x1NPktbxnJqz0w6QHwP/9adbDgD49n2aTsf4Az06YwJ6NSDEAAAAASUVORK5CYII="/>
+        </span>
+        <span class="sf-toolbar-status">{{ collector.calls | length }} </span> {{ collector.totalTiming}} ms
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <ul>
+            {% for call in collector.calls %}
+                <li>{{ call.method }}: <strong>{{ call.timing }}</strong> ms</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endset %}
+
+    {% set link = true %}
+
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig') }}
+{% endblock %}
+
+{#{% block head %}#}
+
+{#{% endblock %}#}
+
+{% block menu %}
+    {# This left-hand menu appears when using the full-screen profiler. #}
+    <span class="label">
+        <span class="icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOUlEQVRYR92X4VEUQRCFPyIQI1AiQCNQIkAjECMAI0AiACMAI1AjQCIAIwAiECPQ+qhpanaY2Z1d664s+89d7fZ0v3n9umd2g+X2EXgH3AFnwKcloTaWLAKeA9fF2i3gZm68pQD2gNMi2fvExCwMSwGslIHXwD7wBvgKHAFXlW0dADKhqYGTis8L4DCLpU6+5341Bky6mzl9zhLNojcBU6hh3xKYhwc1AL+LLD8Ad1IzO0GL39JH5raLh4OcPQxIm3TXLGgfe285ZzHgbg3or/U6Bn6lfi9BqBdtUNf0bBN4AnwA9JMNAQ/01NMFBvqZApVCawFwAwJ/2gA+qoEa1cGIv06+sBoAAcdOa50xiN/DQCyIwAHG2oY4LYFacRKatATakBDMAWAQQdimrxoRL1Kb5Sw1k/siADjZDGqAsXku5eejEWGnIcpYNsglAHvYaRWmalu1K4dUDcujYZM5hTgfcgnAHT/LnGyTlwmYbWTSMP9bhjGTfsd4mP99FiM9H0w3NQAx+WQmah7BpugPP8tQAjBeORlv55ZAtbcEGAnVUbRnyVS1BDopDBeZYEyE0vllogRvi7KV7oNcS9pQGnPN5Alu02yY3YYTm7p/nQ8imZDOEJS6sXMU6UoG0ZJRfNlzUe0pwdoPI+d7zHlFKaV/cxzLXhzHnheTx3E57dZ+IfnnrmRrv5RaL+vmzdiDJUZobarFjbf1aaaeXB+x1NPktbxnJqz0w6QHwP/9adbDgD49n2aTsf4Az06YwJ6NSDEAAAAASUVORK5CYII="/>
+        </span>
+        <strong>Soap</strong>
+    </span>
+{% endblock %}
+
+{% block panel %}
+    {# Optional, for showing the most details. #}
+    <h2>Soap Calls</h2>
+    {% for call in collector.calls %}
+        <table>
+            <tr>
+                <th colspan="2">{{ call.clientName }}::{{ call.method }}<span style="float: right;">{{ call.timing }} ms</span></th>
+            </tr>
+            <tr>
+                <th>Request Headers</th>
+                <td><pre>{{ call.requestHeaders }}</pre></td>
+            </tr>
+            <tr>
+                <th>Request Body</th>
+                <td><pre>{{ call.requestBody }}</pre></td>
+            </tr>
+            <tr>
+                <th>Request Object</th>
+                <td>{{ dump(call.request) }}</td>
+            </tr>
+            <tr>
+                <th>Response Headers</th>
+                <td><pre>{{ call.responseHeaders }}</pre></td>
+            </tr>
+            <tr>
+                <th>Response Body</th>
+                <td><pre>{{ call.responseBody }}</pre></td>
+            </tr>
+            <tr>
+                <th>Response Object</th>
+                <td>{{ dump(call.response) }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+{% endblock %}

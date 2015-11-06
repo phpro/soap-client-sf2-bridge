@@ -8,4 +8,4 @@ services:
         class: Phpro\SoapClient\BridgeDemoBundle\WeatherClient\WeatherClient
         factory: [Phpro\SoapClient\BridgeDemoBundle\WeatherClient\WeatherClientFactory, factory]
         arguments:
-          - @debug.event_dispatcher
+            - @debug.event_dispatcher
