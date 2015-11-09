@@ -1,7 +1,6 @@
 {
     "name": "phpro/soap-client-sf2-bridge",
     "license": "proprietary",
-    "type": "project",
     "autoload": {
         "psr-0": {
             "": "src/",
