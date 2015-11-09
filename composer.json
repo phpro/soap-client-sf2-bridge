@@ -16,5 +16,15 @@
     },
     "require-dev": {
         "phpunit/phpunit": "5.0"
+    },
+  "authors": [
+    {
+      "name": "Jan Vernieuwe",
+      "email": "jan.vernieuwe@phpro.be"
+    },
+    {
+      "name": "Toon Verwerft",
+      "email": "toon.verwerft@phpro.be"
     }
+  ]
 }
