@@ -15,7 +15,9 @@
         "phpro/soap-client": "~0.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.0"
+        "squizlabs/php_codesniffer": "~2.3",
+        "phpunit/phpunit": "5.0",
+        "phpro/grumphp": "~0.5"
     },
   "authors": [
     {
