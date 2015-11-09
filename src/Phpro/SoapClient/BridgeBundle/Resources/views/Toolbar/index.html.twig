@@ -1,0 +1,81 @@
+{# Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> #}
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        <span class="icon">
+            <img height="20" style="padding: 4px 0 4px 0;"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVRYR8WX8TGEMRDF31VACVSAClABKkAF7irgKkAFqMCpgA5QASpAB+Y3NjORyfddktmc75+b+26TvLzd93Zvot9nXdK5pENJG/au5ONF0q2k65LgXMzEXi4kHbRuYgCmLesBsCfpsWVxsmZT0nvtPgAA+WXtwkz8vqSn2n0AcGH5r12bxncHcGpsbQ0g7Q6AA6j6K0nHvVJwZ7LKXZLDv+yHXN24MDC3miipBzwDD1iz4JUDSFlwAYCMhqREetA5rolsTxKaXACMUc8BALiXtN2rCMcAUB9nxkAurjsD6aHfVoT0kWoHDJu1WjGH00OohzFWckwhZeoJ4AIA+Xwu0V0Uc2SH31Sui8Np4dPQjnE3blLyfBjoz5LgJTE7AQBxGAvSgtaxJ0jVo4XPYgA1F/KaIeY9AFCgpJQRb9njDuA1mitLUuQKAGnRH5AZg21q1YEN0rdrX9wAzIz2ZZTzezyBuQDgxvhCqRu6Awi3hv7w/wApD41upCakx4WBmHYGFNKBu668CAMQRjeYKLFpdwZKijCO+XcAzVaMzt9qr5uJ/9OMaver6aC5vR9wzdZeEEsPSQ1JLncw7Ry14Af6ATk7aGEywskrAAAAAElFTkSuQmCC"/>
+        </span>
+        <span class="sf-toolbar-status sf-toolbar-status-green">{{ collector.calls | length }} </span> {{ collector.totalTiming}} ms
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <ul>
+                {% for call in collector.calls %}
+                    <li>{{ call.method }}: <strong>{{ call.timing }} ms</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endset %}
+
+    {% set link = true %}
+
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig') }}
+{% endblock %}
+
+{#{% block head %}#}
+
+{#{% endblock %}#}
+
+{% block menu %}
+    {# This left-hand menu appears when using the full-screen profiler. #}
+    <span class="label">
+        <span class="icon">
+            <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVRYR8WX8TGEMRDF31VACVSAClABKkAF7irgKkAFqMCpgA5QASpAB+Y3NjORyfddktmc75+b+26TvLzd93Zvot9nXdK5pENJG/au5ONF0q2k65LgXMzEXi4kHbRuYgCmLesBsCfpsWVxsmZT0nvtPgAA+WXtwkz8vqSn2n0AcGH5r12bxncHcGpsbQ0g7Q6AA6j6K0nHvVJwZ7LKXZLDv+yHXN24MDC3miipBzwDD1iz4JUDSFlwAYCMhqREetA5rolsTxKaXACMUc8BALiXtN2rCMcAUB9nxkAurjsD6aHfVoT0kWoHDJu1WjGH00OohzFWckwhZeoJ4AIA+Xwu0V0Uc2SH31Sui8Np4dPQjnE3blLyfBjoz5LgJTE7AQBxGAvSgtaxJ0jVo4XPYgA1F/KaIeY9AFCgpJQRb9njDuA1mitLUuQKAGnRH5AZg21q1YEN0rdrX9wAzIz2ZZTzezyBuQDgxvhCqRu6Awi3hv7w/wApD41upCakx4WBmHYGFNKBu668CAMQRjeYKLFpdwZKijCO+XcAzVaMzt9qr5uJ/9OMaver6aC5vR9wzdZeEEsPSQ1JLncw7Ry14Af6ATk7aGEywskrAAAAAElFTkSuQmCC"/>
+        </span>
+        <strong>Soap</strong>
+        <span class="count">
+            <span>{{ collector.calls | length }}</span>
+            <span>{{ collector.totalTiming }} ms</span>
+        </span>
+    </span>
+{% endblock %}
+
+{% block panel %}
+    {# Optional, for showing the most details. #}
+    <h2>Soap Calls</h2>
+    {% for call in collector.calls %}
+        <table>
+            <tr>
+                <th colspan="2">{{ call.clientName }}::{{ call.method }}<span style="float: right;">{{ call.timing }} ms</span></th>
+            </tr>
+            <tr>
+                <th>Request Headers</th>
+                <td><pre>{{ call.requestHeaders }}</pre></td>
+            </tr>
+            <tr>
+                <th>Request Body</th>
+                <td><pre>{{ call.requestBody }}</pre></td>
+            </tr>
+            <tr>
+                <th>Request Object</th>
+                <td>{{ dump(call.request) }}</td>
+            </tr>
+            <tr>
+                <th>Response Headers</th>
+                <td><pre>{{ call.responseHeaders }}</pre></td>
+            </tr>
+            <tr>
+                <th>Response Body</th>
+                <td><pre>{{ call.responseBody }}</pre></td>
+            </tr>
+            <tr>
+                <th>Response Object</th>
+                <td>{{ dump(call.response) }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+{% endblock %}
