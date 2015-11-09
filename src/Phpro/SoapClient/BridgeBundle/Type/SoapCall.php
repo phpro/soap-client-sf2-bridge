@@ -181,7 +181,6 @@ class SoapCall
             return $this;
         }
 
-        $this->stopwatch->openSection('phpro_soap');
         $this->stopwatch->start($this->hash);
         return $this;
     }
@@ -223,7 +222,6 @@ class SoapCall
             return $this;
         }
         $this->timing = $this->stopwatch->stop($this->hash);
-        $this->stopwatch->stopSection('phpro_soap');
         return $this;
     }
 
