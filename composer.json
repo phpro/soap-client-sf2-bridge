@@ -1,5 +1,5 @@
 {
-    "name": "janvernieuwe/soap-client-sf2bridge",
+    "name": "phpro/soap-client-sf2-bridge",
     "license": "proprietary",
     "type": "project",
     "autoload": {
