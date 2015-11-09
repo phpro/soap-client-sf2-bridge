@@ -1,3 +1,0 @@
-phpro_soap_client_bridge_demo_homepage:
-    path:     /
-    defaults: { _controller: PhproSoapClientBridgeDemoBundle:Default:index }

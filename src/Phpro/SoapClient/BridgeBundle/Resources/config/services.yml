@@ -1,0 +1,11 @@
+services:
+    phpro_soap_client_bridge.collector:
+        class: Phpro\SoapClient\BridgeBundle\DataCollector\DataCollector
+        public: false
+        tags:
+            -
+                name:     data_collector
+                template: '@PhproSoapClientBridge/Toolbar/index.html.twig'
+                id:       'phpro.soap_client'
+        calls:
+          - [setStopwatch, [@debug.stopwatch]]
