@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpro\SoapClient\BridgeBundle\DependencyInjection\Dispatcher;
+namespace Phpro\SoapClient\BridgeBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

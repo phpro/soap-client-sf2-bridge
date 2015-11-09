@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpro\SoapClient\BridgeBundle\SoapCallCollector;
+namespace Phpro\SoapClient\BridgeBundle\DataCollector;
 
 use Phpro\SoapClient\BridgeBundle\Type\SoapCall;
 use Phpro\SoapClient\Event\RequestEvent;

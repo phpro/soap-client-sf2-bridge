@@ -1,6 +1,6 @@
 services:
     phpro_soap_client_bridge.collector:
-        class: Phpro\SoapClient\BridgeBundle\DataCollector\DataCollector
+        class: Phpro\SoapClient\BridgeBundle\DataCollector\SoapCallCollector
         public: false
         tags:
             -
