@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: janvernieuwe
- * Date: 7/10/15
- * Time: 23:15
- */
 
-namespace Phpro\SoapClient\BridgeBundle\DataCollector;
+namespace Phpro\SoapClient\BridgeBundle\SoapCallCollector;
 
 use Phpro\SoapClient\BridgeBundle\Type\SoapCall;
 use Phpro\SoapClient\Event\RequestEvent;
@@ -19,10 +13,10 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
- * Class DataCollector
- * @package Phpro\SoapClient\BridgeBundle\DataCollector
+ * Class SoapCallCollector
+ * @package Phpro\SoapClient\BridgeBundle\SoapCallCollector
  */
-class DataCollector implements EventSubscriberInterface, DataCollectorInterface
+class SoapCallCollector implements EventSubscriberInterface, DataCollectorInterface
 {
 
     /**
@@ -40,24 +34,7 @@ class DataCollector implements EventSubscriberInterface, DataCollectorInterface
     ];
 
     /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * The array keys are event names and the value can be:
-     *
-     *  * The method name to call (priority defaults to 0)
-     *  * An array composed of the method name to call and the priority
-     *  * An array of arrays composed of the method names to call and respective
-     *    priorities, or 0 if unset
-     *
-     * For instance:
-     *
-     *  * array('eventName' => 'methodName')
-     *  * array('eventName' => array('methodName', $priority))
-     *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
-     *
-     * @return array The event names to listen to
-     *
-     * @api
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -111,7 +88,7 @@ class DataCollector implements EventSubscriberInterface, DataCollectorInterface
      */
     public function getName()
     {
-        return 'app.phpro_soap_client';
+        return 'phpro.soap_client';
     }
 
     /**

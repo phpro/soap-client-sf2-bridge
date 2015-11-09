@@ -6,6 +6,6 @@ services:
             -
                 name:     data_collector
                 template: '@PhproSoapClientBridge/Toolbar/index.html.twig'
-                id:       'app.phpro_soap_client'
+                id:       'phpro.soap_client'
         calls:
           - [setStopwatch, [@debug.stopwatch]]

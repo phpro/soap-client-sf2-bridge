@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: janvernieuwe
- * Date: 6/11/15
- * Time: 20:56
- */
 
 namespace Phpro\SoapClient\BridgeBundle\Type;
 
@@ -186,6 +180,8 @@ class SoapCall
         if (!$this->stopwatch instanceof Stopwatch) {
             return $this;
         }
+
+        $this->stopwatch->openSection('phpro_soap');
         $this->stopwatch->start($this->hash);
         return $this;
     }
@@ -227,6 +223,7 @@ class SoapCall
             return $this;
         }
         $this->timing = $this->stopwatch->stop($this->hash);
+        $this->stopwatch->stopSection('phpro_soap');
         return $this;
     }
 
