@@ -6,3 +6,4 @@ parameters:
             standard: "PSR2"
             ignore_patterns:
               - "*Test.php"
+              - "*Spec.php"
