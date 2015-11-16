@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "~2.3",
-        "phpunit/phpunit": "5.0",
+        "phpunit/phpunit": "4.*",
         "phpro/grumphp": "~0.5"
     },
   "authors": [
