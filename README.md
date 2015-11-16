@@ -33,3 +33,8 @@ services:
         tags:
             - { name: phpro_soap_client.event_dispatcher }
 ```
+
+## Register dispatcher
+Don't forget to register the EventDispatcher on your ClientBuilder as in the example below.
+```$clientBuilder->withEventDispatcher($dispatcher);
+```
