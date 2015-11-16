@@ -35,6 +35,8 @@ services:
 ```
 
 ## Register dispatcher
+
 Don't forget to register the EventDispatcher on your ClientBuilder as in the example below.
+
 ```$clientBuilder->withEventDispatcher($dispatcher);
 ```
