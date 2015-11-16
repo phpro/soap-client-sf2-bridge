@@ -32,4 +32,4 @@ services:
         class: Symfony\Component\EventDispatcher\EventDispatcher
         tags:
             - { name: phpro_soap_client.event_dispatcher }
-``
+```
