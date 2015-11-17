@@ -12,7 +12,6 @@ use Phpro\SoapClient\Type\ResultInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Stopwatch\Stopwatch;
-use Symfony\Component\Stopwatch\StopwatchEvent;
 
 class SoapCallSpec extends ObjectBehavior
 {
