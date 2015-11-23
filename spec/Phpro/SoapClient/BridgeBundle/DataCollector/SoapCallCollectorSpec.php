@@ -2,7 +2,6 @@
 
 namespace spec\Phpro\SoapClient\BridgeBundle\DataCollector;
 
-use Phpro\SoapClient\BridgeBundle\DataCollector\SoapCallCollector;
 use Phpro\SoapClient\Client;
 use Phpro\SoapClient\Event\RequestEvent;
 use Phpro\SoapClient\Event\ResponseEvent;
@@ -10,18 +9,17 @@ use Phpro\SoapClient\Events;
 use Phpro\SoapClient\Type\ResultInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 
 class SoapCallCollectorSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(SoapCallCollector::class);
+        $this->shouldHaveType('Phpro\SoapClient\BridgeBundle\DataCollector\SoapCallCollector');
     }
 
     function it_should_be_a_collector()
     {
-        $this->shouldImplement(DataCollectorInterface::class);
+        $this->shouldImplement('Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface');
     }
 
     function it_should_subscribe_to_events() {

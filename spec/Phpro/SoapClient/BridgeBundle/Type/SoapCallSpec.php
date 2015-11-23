@@ -2,7 +2,6 @@
 
 namespace spec\Phpro\SoapClient\BridgeBundle\Type;
 
-use Phpro\SoapClient\BridgeBundle\Type\SoapCall;
 use Phpro\SoapClient\Client;
 use Phpro\SoapClient\ClientInterface;
 use Phpro\SoapClient\Event\RequestEvent;
@@ -22,7 +21,7 @@ class SoapCallSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(SoapCall::class);
+        $this->shouldHaveType('Phpro\SoapClient\BridgeBundle\Type\SoapCall');
     }
 
     function it_should_start_request(
