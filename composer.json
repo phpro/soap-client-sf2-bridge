@@ -1,6 +1,8 @@
 {
     "name": "phpro/soap-client-sf2-bridge",
     "license": "MIT",
+    "description": "A Symfony2 bridge for the phpro/soap-client package",
+    "keywords": ["soap", "symfony", "datacollector", "debug"],
     "autoload": {
         "psr-0": {
             "Phpro\\SoapClient\\BridgeBundle": "src/"
