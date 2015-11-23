@@ -14,7 +14,7 @@
         <div class="sf-toolbar-info-piece">
             <ul>
                 {% for call in collector.calls %}
-                    <li>{{ call.method }}: <strong>{{ call.timing }} ms</li>
+                    <li>{{ call.method }}: <strong>{{ call.timing }} ms</strong></li>
                 {% endfor %}
             </ul>
         </div>
@@ -48,7 +48,7 @@
     {# Optional, for showing the most details. #}
     <h2>Soap Calls</h2>
     {% for call in collector.calls %}
-        <table>
+        <table class="table-bordered">
             <tr>
                 <th colspan="2">{{ call.clientName }}::{{ call.method }}<span style="float: right;">{{ call.timing }} ms</span></th>
             </tr>
