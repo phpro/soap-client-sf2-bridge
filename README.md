@@ -1,7 +1,9 @@
 # SOAP Client Symfony Bridge
 
 This package contains a Symfony Bridge for the [soap-client](https://github.com/phpro/soap-client).
+
 The SOAP requests and responses will be logged in the profiler page. 
+
 A stopwatch is collecting information about runtime and memory usage.
 
 
@@ -23,6 +25,7 @@ if (in_array($this->getEnvironment(), array('dev', 'test'))) {
 ## Registering additional event dispatchers
 
 The DataCollector listens to the default event dispatcher. 
+
 If you configured the soap-client to use another event dispatcher, you can mark it with the tag: `phpro_soap_client.event_dispatcher`.
 
 ```yml
@@ -41,3 +44,7 @@ Don't forget to register the EventDispatcher on your ClientBuilder as in the exa
 ```php
 $clientBuilder->withEventDispatcher($dispatcher);
 ```
+
+## Icon
+
+Made by <a href="http://www.freepik.com">Freepik</a>
