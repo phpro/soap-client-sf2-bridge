@@ -65,8 +65,14 @@ class SoapCallSpec extends ObjectBehavior
         Client $client
     ) {
         $debugData = [
-            'request'  => ['headers' => 'SoapRequestHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'],
-            'response' => ['headers' => 'SoapResponseHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapResponseBody</body>'],
+            'request'  => [
+                'headers' => 'SoapRequestHeader',
+                'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'
+            ],
+            'response' => [
+                'headers' => 'SoapResponseHeader',
+                'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapResponseBody</body>'
+            ],
         ];
         $client->debugLastSoapRequest()->willReturn($debugData);
         $responseEvent->getResponse()->willReturn($result);
