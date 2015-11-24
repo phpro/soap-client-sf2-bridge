@@ -1,3 +1,5 @@
+[![Build status](https://api.travis-ci.org/phpro/soap-client-sf2-bridge.svg)](http://travis-ci.org/phpro/soap-client-sf2-bridge)
+[![Packagist](https://img.shields.io/packagist/v/phpro/soap-client-sf2-bridge.svg)](https://packagist.org/packages/phpro/soap-client-sf2-bridge)
 # SOAP Client Symfony Bridge
 
 This package contains a Symfony Bridge for the [soap-client](https://github.com/phpro/soap-client).
