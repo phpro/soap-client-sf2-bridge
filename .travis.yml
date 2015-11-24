@@ -18,4 +18,3 @@ install:
 
 script:
    - ./vendor/bin/grumphp run -n
-   - ./vendor/bin/phpspec run -n
