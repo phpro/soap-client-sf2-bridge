@@ -8,6 +8,8 @@ The SOAP requests and responses will be logged in the profiler page.
 
 A stopwatch is collecting information about runtime and memory usage.
 
+This version is compatible with Symfony 3.2
+
 
 ## Installation
 

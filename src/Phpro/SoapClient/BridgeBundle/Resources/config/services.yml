@@ -8,4 +8,4 @@ services:
                 template: '@PhproSoapClientBridge/Toolbar/index.html.twig'
                 id:       'phpro.soap_client'
         calls:
-          - [setStopwatch, [@debug.stopwatch]]
+          - [setStopwatch, ['@debug.stopwatch']]
