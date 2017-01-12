@@ -102,7 +102,7 @@ class SoapCall
      */
     public function getTiming()
     {
-        return $this->timing->getDuration();
+        return $this->timing ? $this->timing->getDuration(): 0;
     }
 
     /**
@@ -111,11 +111,16 @@ class SoapCall
      */
     public function getRequestBody()
     {
-        $request = new \DOMDocument();
-        $request->preserveWhiteSpace = false;
-        $request->formatOutput = true;
-        $request->loadXML($this->requestBody);
-        return $request->saveXML();
+        try {
+            $request = new \DOMDocument();
+            $request->preserveWhiteSpace = false;
+            $request->formatOutput = true;
+            $request->loadXML($this->requestBody);
+            
+            return $request->saveXML();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -133,11 +138,16 @@ class SoapCall
      */
     public function getResponseBody()
     {
-        $response = new \DOMDocument();
-        $response->preserveWhiteSpace = false;
-        $response->formatOutput = true;
-        $response->loadXML($this->responseBody);
-        return $response->saveXML();
+        try {
+            $response = new \DOMDocument();
+            $response->preserveWhiteSpace = false;
+            $response->formatOutput = true;
+            $response->loadXML($this->responseBody);
+            
+            return $response->saveXML();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
