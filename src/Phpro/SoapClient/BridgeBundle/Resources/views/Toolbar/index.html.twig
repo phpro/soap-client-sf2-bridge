@@ -11,7 +11,8 @@
                 <img width="18" height="28" alt="Soap"
                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAcCAQAAADGzSesAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfgBgkQExhGfXG8AAAByklEQVQ4y92Sz0tUYRSGnzP3mkwTKZTJGNO9d1WBlIJQBPkpRBQt+rGJoAmCWUXgQtolgosgXFhQm0CLKKJNWO2ihZ+UFiSMLayBRG5pmSTMWEMj09yvRfcODfMPRGd3Xp5zOO85B/69sOql7gPeHafFnfErkWLXQzFtbHYyzVRVqYfMc0p8YPWvMoDexhoqwyTjOgdwKNHdDlZP0rliDrur/lLEOOuyn3k/C7Ajw5BTsdwxzrOP5rYnixUAtTV2jBM0uG/9gupiiE5xRH0mCeRlzDxjihZGZM0skyROlg4CGrgn6iy3sLgta6aDhPHkPtfIm41ykQv08xgo2jzkJRZfTECcIwya0ckloKg0aVawZNNEwdZlFsKJf6rXrGDCrEIj12kyrT2naza+t1A6JSl3zsVpljMkeIrHFuPXQDnjttFvtkuXnCTNDT3s5vCtmxIBB23ZI7vp465ZkBR5jpKUcxPLAFVIHWcEz1wNBl6UAVSKB8wyzEcdhLdTm0njgby3gj+K/mTGyfCISyoeHfgH03wjy3zkrrdJ2tlAJ5dpDV9FB2qUVxR5p8NOu77PrYfl5ao7v+Qu8lX/ivI3JjUT2wb0Mct/Hb8BubCYiljVtrAAAAAASUVORK5CYII="/>
                 <span class="sf-toolbar-value sf-toolbar-status">{{ collector.calls | length }}</span>
-                <span class="sf-toolbar-info-piece-additional-detail">in {{ '%0.2f'|format(collector.totalTiming) }} ms</span>
+                <span class="sf-toolbar-info-piece-additional-detail">in {{ '%0.2f'|format(collector.totalTiming) }}
+                    ms</span>
             {% else %}
                 {{ include('@PhproSoapClientBridge/Icon/soap.svg') }}
                 <span class="sf-toolbar-value">{{ collector.calls | length }}</span>
@@ -143,29 +144,60 @@
             {% for request in collector.calls %}
                 <tr>
                     <td class="nowrap">{{ loop.index }}</td>
-                    <td class="nowrap">{{ '%0.2f'|format(request.timing) }} ms </td>
+                    <td class="nowrap">{{ '%0.2f'|format(request.timing) }} ms</td>
                     <td>
                         <div>{{ request.clientName }}::{{ request.method }}</div>
-                        <a href="#" class="btn btn-link text-small sf-toggle" data-toggle-selector="#soap-request-headers-{{ loop.index }}" data-toggle-alt-content="Hide headers"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
-                            Show headers
-                        </a>
 
-                        <div id="soap-request-headers-{{ loop.index }}" class="hidden sf-toggle-content"><pre>{{ request.requestHeaders }}</pre></div>
-                        
-                        <a href="#" class="btn btn-link text-small sf-toggle" data-toggle-selector="#soap-request-body-{{ loop.index }}" data-toggle-alt-content="Hide body"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
-                            Show body
-                        </a>
-                        
-                        <div id="soap-request-body-{{ loop.index }}" class="hidden sf-toggle-content"><pre>{{ request.requestBody }}</pre></div>
+                        <hr>
+                        <h1>
+                            Request
+                            <a href="#" class="btn btn-link text-small sf-toggle"
+                               data-toggle-selector="#soap-request-headers-{{ loop.index }}"
+                               data-toggle-alt-content="Hide headers"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
+                                Show headers
+                            </a>
+                            <a href="#" class="btn btn-link text-small sf-toggle" data-toggle-initial="display"
+                               data-toggle-selector="#soap-request-body-{{ loop.index }}"
+                               data-toggle-alt-content="Show body"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
+                                Hide body
+                            </a>
+                        </h1>
 
-                        <a href="#" class="btn btn-link text-small sf-toggle" data-toggle-initial="display" data-toggle-selector="#soap-response-{{ loop.index }}" data-toggle-alt-content="Show response"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
-                            Hide response
-                        </a>
-                        
-                        <div id="soap-response-{{ loop.index }}" class="sf-toggle-content soap-response-container">
-                            <div style="margin-bottom: 15px;"><pre>{{ request.responseHeaders }}</pre></div>
-                            <div><pre>{{ request.responseBody }}</pre></div>
+                        <div id="soap-request-headers-{{ loop.index }}"
+                             class="hidden sf-toggle-content soap-response-container">
+                            <pre>{{ request.requestHeaders }}</pre>
                         </div>
+                        <div id="soap-request-body-{{ loop.index }}" class="sf-toggle-content soap-response-container">
+                            <pre>{{ request.requestBody }}</pre>
+                        </div>
+
+                        <hr>
+                        <h1>
+                            Response
+                            <a href="#" class="btn btn-link text-small sf-toggle"
+                               data-toggle-selector="#soap-response-header-{{ loop.index }}"
+                               data-toggle-alt-content="Hide headers"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
+                                Show headers
+                            </a>
+                            <a href="#" class="btn btn-link text-small sf-toggle" data-toggle-initial="display"
+                               data-toggle-selector="#soap-response-body-{{ loop.index }}"
+                               data-toggle-alt-content="Show body"{{ profiler_markup_version == 1 ? 'onclick="return toggle(this);"' }}>
+                                Hide body
+                            </a>
+                        </h1>
+
+                        <div id="soap-response-header-{{ loop.index }}"
+                             class="sf-toggle-content soap-response-container">
+                            <div style="margin-bottom: 15px;">
+                                <pre>{{ request.responseHeaders }}</pre>
+                            </div>
+                        </div>
+                        <div id="soap-response-body-{{ loop.index }}" class="sf-toggle-content soap-response-container">
+                            <div>
+                                <pre>{{ request.responseBody }}</pre>
+                            </div>
+                        </div>
+
                     </td>
                 </tr>
             {% endfor %}
