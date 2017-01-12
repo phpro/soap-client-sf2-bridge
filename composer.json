@@ -9,27 +9,17 @@
         }
     },
     "require": {
-        "php": ">=5.4.3",
-        "symfony/dependency-injection": "~2.3",
-        "symfony/event-dispatcher": "~2.3",
-        "symfony/http-kernel": "~2.3",
-        "symfony/stopwatch": "~2.3",
-        "phpro/soap-client": "~0.1"
+        "php": ">=7.0",
+        "symfony/dependency-injection": "^2.3",
+        "symfony/event-dispatcher": "^2.3",
+        "symfony/http-kernel": "^2.3",
+        "symfony/stopwatch": "^2.3",
+        "phpro/soap-client": "^0.2"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.2",
         "squizlabs/php_codesniffer": "~2.3",
         "phpunit/phpunit": "4.*",
         "phpro/grumphp": "~0.5"
-    },
-  "authors": [
-    {
-      "name": "Jan Vernieuwe",
-      "email": "jan.vernieuwe@phpro.be"
-    },
-    {
-      "name": "Toon Verwerft",
-      "email": "toon.verwerft@phpro.be"
     }
-  ]
 }
