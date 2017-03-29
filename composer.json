@@ -14,7 +14,7 @@
         "symfony/event-dispatcher": "~2.8|~3.0",
         "symfony/http-kernel": "~2.8|~3.0",
         "symfony/stopwatch": "~2.8|~3.0",
-        "phpro/soap-client": "^0.2"
+        "phpro/soap-client": "~0.2"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.2",
