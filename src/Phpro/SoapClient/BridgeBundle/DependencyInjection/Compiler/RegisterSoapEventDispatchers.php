@@ -19,11 +19,13 @@ class RegisterSoapEventDispatchers implements CompilerPassInterface
      * @param ContainerBuilder $container
      *
      * @api
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
      */
     public function process(ContainerBuilder $container)
     {
         // Register subscriber on the default event dispatcher
-        $definition = $container->findDefinition('debug.event_dispatcher');
+        $definition = $container->findDefinition('event_dispatcher');
         $definition->addMethodCall(
             'addSubscriber',
             [new Reference('phpro_soap_client_bridge.collector')]
