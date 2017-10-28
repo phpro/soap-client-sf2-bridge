@@ -48,7 +48,3 @@ Don't forget to register the EventDispatcher on your ClientBuilder as in the exa
 ```php
 $clientBuilder->withEventDispatcher($dispatcher);
 ```
-
-## Icon
-
-Made by <a href="http://www.freepik.com">Freepik</a>
