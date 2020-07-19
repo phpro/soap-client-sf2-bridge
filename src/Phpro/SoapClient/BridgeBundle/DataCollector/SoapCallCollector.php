@@ -124,4 +124,9 @@ class SoapCallCollector implements EventSubscriberInterface, DataCollectorInterf
         }
         return $timing;
     }
+
+    public function reset()
+    {
+        $this->data = [];
+    }
 }
