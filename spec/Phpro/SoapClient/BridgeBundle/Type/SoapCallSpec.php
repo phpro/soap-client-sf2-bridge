@@ -29,16 +29,17 @@ class SoapCallSpec extends ObjectBehavior
         RequestEvent $event,
         RequestInterface $request,
         ClientInterface $client
-    ) {
+    )
+    {
         $event->getRequest()->willReturn($request);
         $event->getMethod()->willReturn('soapMethod');
-        $event->getClient()->willReturn($client);
+        $event->getClient()->shouldBeCalled();
         $stopwatch->start(Argument::type('string'))->shouldBeCalled();
 
         $this->setRequest($event);
         $this->getMethod()->shouldBe('soapMethod');
         $this->getRequest()->shouldBe($request);
-        $this->getHash()->shouldStartWith('Double\ClientInterface');
+        $this->getHash()->shouldStartWith('Double\Phpro\SoapClient\Client');
     }
 
     function it_should_stop_request(
@@ -47,7 +48,26 @@ class SoapCallSpec extends ObjectBehavior
         RequestEvent $requestEvent,
         ResultInterface $result,
         Client $client
-    ) {
+    )
+    {
+
+        $debugData = [
+            'request' => [
+                'headers' => 'SoapRequestHeader',
+                'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'
+            ],
+            'response' => [
+                'headers' => 'SoapResponseHeader',
+                'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapResponseBody</body>'
+            ],
+        ];
+
+        $client->debugLastSoapRequest()->willReturn($debugData);
+
+        $requestEvent->getRequest()->shouldBeCalled();
+        $requestEvent->getMethod()->shouldBeCalled();
+        $requestEvent->getClient()->willReturn($client);
+
         $responseEvent->getResponse()->willReturn($result);
         $responseEvent->getClient()->willReturn($client);
         $stopwatch->start(Argument::type('string'))->shouldBeCalled();
@@ -62,9 +82,10 @@ class SoapCallSpec extends ObjectBehavior
         RequestEvent $requestEvent,
         ResultInterface $result,
         Client $client
-    ) {
+    )
+    {
         $debugData = [
-            'request'  => [
+            'request' => [
                 'headers' => 'SoapRequestHeader',
                 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'
             ],
@@ -74,6 +95,11 @@ class SoapCallSpec extends ObjectBehavior
             ],
         ];
         $client->debugLastSoapRequest()->willReturn($debugData);
+
+        $requestEvent->getRequest()->shouldBeCalled();
+        $requestEvent->getMethod()->shouldBeCalled();
+        $requestEvent->getClient()->willReturn($client);
+
         $responseEvent->getResponse()->willReturn($result);
         $responseEvent->getClient()->willReturn($client);
 

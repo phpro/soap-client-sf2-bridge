@@ -8,7 +8,6 @@ use Phpro\SoapClient\Event\ResponseEvent;
 use Phpro\SoapClient\Events;
 use Phpro\SoapClient\Type\ResultInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SoapCallCollectorSpec extends ObjectBehavior
 {
@@ -22,14 +21,20 @@ class SoapCallCollectorSpec extends ObjectBehavior
         $this->shouldImplement('Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface');
     }
 
-    function it_should_subscribe_to_events() {
+    function it_should_subscribe_to_events()
+    {
         $this->getSubscribedEvents()->shouldHaveKeyWithValue(Events::RESPONSE, 'onClientResponse');
         $this->getSubscribedEvents()->shouldHaveKeyWithValue(Events::REQUEST, 'onClientRequest');
     }
 
     function it_should_be_able_to_register_a_request(
         RequestEvent $requestEvent
-    ) {
+    )
+    {
+        $requestEvent->getRequest()->shouldBeCalled();
+        $requestEvent->getMethod()->shouldBeCalled();
+        $requestEvent->getClient()->shouldBeCalled();
+
         $this->onClientRequest($requestEvent);
         $this->getCalls()->shouldHaveCount(1);
     }
@@ -41,23 +46,29 @@ class SoapCallCollectorSpec extends ObjectBehavior
         ResponseEvent $responseEvent
     ) {
         $debugData = [
-            'request'  => ['headers' => 'SoapRequestHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'],
-            'response' => ['headers' => 'SoapResponseHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapResponseBody</body>'],
+                'request'  => ['headers' => 'SoapRequestHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapRequestBody</body>'],
+                'response' => ['headers' => 'SoapResponseHeader', 'body' => '<?xml version="1.0" encoding="UTF-8"?><body>SoapResponseBody</body>'],
         ];
         $client->debugLastSoapRequest()->willReturn($debugData);
         $responseEvent->getResponse()->willReturn($result);
         $responseEvent->getClient()->willReturn($client);
+
+        $requestEvent->getRequest()->shouldBeCalled();
+        $requestEvent->getMethod()->shouldBeCalled();
+        $requestEvent->getClient()->shouldBeCalled();
 
         $this->onClientRequest($requestEvent);
         $this->onClientResponse($responseEvent);
         $this->getCalls()->shouldHaveCount(1);
     }
 
-    function it_should_register_the_correct_name() {
+    function it_should_register_the_correct_name()
+    {
         $this->getName()->shouldBe('phpro.soap_client');
     }
 
-    function it_should_return_a_total_timing() {
+    function it_should_return_a_total_timing()
+    {
         $this->getTotalTiming()->shouldBe(0);
     }
 }
