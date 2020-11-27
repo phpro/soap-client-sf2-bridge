@@ -1,3 +1,8 @@
+> ## Repository abandoned 2020-11-27
+>
+> This repository has been archived since we are not using it anymore internally.
+> Feel free to use it AS-IS, we won't be providing any support anymore.
+
 [![Build status](https://api.travis-ci.org/phpro/soap-client-sf2-bridge.svg)](http://travis-ci.org/phpro/soap-client-sf2-bridge)
 [![Packagist](https://img.shields.io/packagist/v/phpro/soap-client-sf2-bridge.svg)](https://packagist.org/packages/phpro/soap-client-sf2-bridge)
 # SOAP Client Symfony Bridge
